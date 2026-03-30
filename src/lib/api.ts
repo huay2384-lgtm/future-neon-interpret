@@ -1,6 +1,4 @@
-const API_BASE_URL = typeof window !== 'undefined' && window.location.origin.includes('localhost')
-  ? 'http://localhost:5000/api'
-  : '/api';
+const API_BASE_URL = import.meta.env.DEV ? 'http://localhost:5000/api' : '/api';
 
 export interface User {
   id: string;

@@ -1,6 +1,4 @@
-const API_BASE_URL = typeof window !== 'undefined' && window.location.hostname === 'localhost'
-  ? 'http://localhost:5000/api'
-  : '/api';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 export interface User {
   id: string;

@@ -83,34 +83,16 @@
 └── README.md             # 项目说明
 ```
 
-## 部署到 Vercel
+## 部署
 
-### 自动部署（推荐）
-项目已配置为自动部署到 Vercel。当你推送代码到 GitHub 的 `main` 分支时，Vercel 会自动重新部署。
-
-### 环境变量配置
-由于 CLI 工具可能遇到字符编码问题，请在 Vercel 控制台手动设置环境变量：
-
-1. 访问 [Vercel Dashboard](https://vercel.com/dashboard)
-2. 选择你的项目
-3. 进入 **Settings** → **Environment Variables**
-4. 添加以下变量：
-
-```
-SUPABASE_URL=https://wtlsbhnitpqueemdluob.supabase.co
-SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-GEMINI_API_KEY=AIzaSyDUIw86sQ2V9d9sMxC8Nvbv05Q9OvYUVfk
-```
-
-### 手动部署（可选）
-如果需要手动部署：
-
+### 前端部署
 ```bash
-npx vercel --prod
+npm run build
+# 将 dist/ 目录部署到静态托管服务
 ```
 
-### 故障排除
-如果遇到 CLI 字符编码问题，请使用浏览器直接在 Vercel 控制台操作。
+### 后端部署
+推荐部署到Vercel、Railway或Heroku。
 
 ## 贡献
 

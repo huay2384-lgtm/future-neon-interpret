@@ -23,6 +23,20 @@ if (!supabaseUrl || !supabaseKey) {
 const supabase = createClient(supabaseUrl || '', supabaseKey || '');
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // Handle CORS preflight
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    return res.status(200).end();
+  }
+
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Content-Type', 'application/json');
+
   const path = req.url?.replace(/^\/api/, '') || '';
   const body = req.body as Body;
 
@@ -71,6 +85,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     res.status(404).json({ message: 'Route not found' });
   } catch (error: any) {
+    console.error('API error:', error);
     res.status(500).json({ error: error.message || 'Unknown error' });
   }
 }

@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ff83d1;
+  --color-secondary: #0fceff;
+  --color-tertiary: #c47fff;
+  --color-background: #0d0a27;
+  --color-surface: #181538;
+  --color-surface-container: #1e1a41;
+  --color-on-surface: #e7e2ff;
+  --color-on-surface-variant: #aca7cc;
+  --color-outline: #757294;
+  --color-outline-variant: #474464;
+  --color-success: #00ff66;
+
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface font-body selection:bg-primary selection:text-background min-h-screen overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .retro-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 131, 209, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 131, 209, 0.05) 1px, transparent 1px);
+  }
+  .scanline {
+    background: linear-gradient(to bottom, rgba(13, 10, 39, 0) 50%, rgba(15, 206, 255, 0.02) 50%);
+    background-size: 100% 4px;
+  }
+  .glitch-text {
+    text-shadow: 2px 0 #0fceff, -2px 0 #ff83d1;
+  }
+  .neon-glow-primary {
+    box-shadow: 0 0 10px #ff83d1, 0 0 20px rgba(255, 131, 209, 0.3);
+  }
+  .neon-glow-secondary {
+    box-shadow: 0 0 10px #0fceff, 0 0 20px rgba(15, 206, 255, 0.3);
+  }
+}
+
+/* Custom range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: #181538;
+  border-radius: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  background: #ff83d1;
+  margin-top: -6px;
+  border-radius: 0;
+  box-shadow: 0 0 10px #ff83d1;
+}
+

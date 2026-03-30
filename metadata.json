@@ -1,0 +1,7 @@
+{
+  "name": "未来 NEON INTERPRET",
+  "description": "",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

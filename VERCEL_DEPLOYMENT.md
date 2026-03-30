@@ -16,7 +16,7 @@
 
 #### 1. 准备工作
 
-1. **创建 Vercel 项目**
+1. **创建 Vercel 项目**               
    ```bash
    # 安装 Vercel CLI
    npm install -g vercel
@@ -27,11 +27,20 @@
 
 2. **配置环境变量**
    在 Vercel 项目设置中添加以下环境变量：
-   ```
-   SUPABASE_URL=your_supabase_project_url
-   SUPABASE_ANON_KEY=your_supabase_anon_key
-   GEMINI_API_KEY=your_gemini_api_key
-   ```
+
+   | 变量名 | 描述 | 获取方式 |
+   |--------|------|----------|
+   | `SUPABASE_URL` | Supabase 项目 URL | Supabase 控制台 > 项目设置 > API |
+   | `SUPABASE_ANON_KEY` | Supabase 匿名密钥 | Supabase 控制台 > 项目设置 > API |
+   | `GEMINI_API_KEY` | Google Gemini API 密钥 | [Google AI Studio](https://ai.google.dev) |
+
+   **详细配置步骤：**
+   1. 在 Vercel 面板中进入项目设置
+   2. 点击 "Environment Variables"
+   3. 为每个变量添加名称和值
+   4. 选择环境（Production, Preview, Development）
+
+   或者使用项目中的 `.env.vercel` 文件作为配置参考。
 
 #### 2. 创建 Vercel Functions
 
@@ -201,14 +210,68 @@ git push heroku main
 
 ## 🔧 环境变量配置
 
-在部署平台设置以下环境变量：
+### 必需的环境变量
 
-### Vercel
+项目需要以下环境变量才能正常运行：
+
+#### Supabase 配置
+```bash
+SUPABASE_URL=https://your-project-id.supabase.co
+SUPABASE_ANON_KEY=your-supabase-anon-key
 ```
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_ANON_KEY=your-anon-key
+
+**获取 Supabase 配置：**
+1. 访问 [supabase.com](https://supabase.com) 创建项目
+2. 进入项目控制台 > 设置 > API
+3. 复制 "Project URL" 作为 `SUPABASE_URL`
+4. 复制 "anon public" 密钥作为 `SUPABASE_ANON_KEY`
+
+#### Google Gemini API 配置
+```bash
 GEMINI_API_KEY=your-gemini-api-key
 ```
+
+**获取 Gemini API 密钥：**
+1. 访问 [Google AI Studio](https://ai.google.dev)
+2. 创建新的 API 密钥
+3. 复制密钥值
+
+### 在 Vercel 中配置环境变量
+
+#### 方法1：Vercel 控制台
+1. 登录 [vercel.com](https://vercel.com)
+2. 选择您的项目
+3. 点击 "Settings" > "Environment Variables"
+4. 添加每个变量：
+   - **Name**: 变量名（如 `SUPABASE_URL`）
+   - **Value**: 变量值
+   - **Environment**: 选择 `Production`（生产环境）
+
+#### 方法2：Vercel CLI
+```bash
+# 设置环境变量
+vercel env add SUPABASE_URL
+vercel env add SUPABASE_ANON_KEY
+vercel env add GEMINI_API_KEY
+```
+
+#### 方法3：使用 .env.vercel 文件
+项目中已包含 `.env.vercel` 文件作为配置参考。
+
+### 环境变量验证
+
+部署后，可以通过以下方式验证配置：
+
+1. **检查 Vercel 函数日志**
+2. **测试 API 端点**
+3. **检查应用功能是否正常**
+
+### 安全注意事项
+
+- ✅ 永远不要将 `.env` 文件提交到 Git
+- ✅ 使用不同的密钥用于开发和生产环境
+- ✅ 定期轮换 API 密钥
+- ✅ 监控 API 使用情况
 
 ### Railway/Render/Heroku
 ```

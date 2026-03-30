@@ -2,12 +2,13 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "builds": [
-    { "src": "api/index.ts", "use": "@vercel/node" }
-  ],
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "@vercel/node@latest"
+    }
+  },
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/index.ts" },
-    { "src": "/(.*)\\.(js|css|svg|png|jpg|jpeg|gif|webp|woff|woff2)", "dest": "/$1.$2" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/api/(.*)", "dest": "/api" },
+    { "src": "/(.*)", "dest": "/index.html", "status": 200 }
   ]
 }

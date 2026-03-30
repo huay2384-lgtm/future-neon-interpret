@@ -20,7 +20,12 @@
 - **数据库**: Supabase (PostgreSQL)
 - **AI**: Google Gemini Live API
 
-## 快速开始
+## 🚀 快速部署
+
+### Vercel 一键部署
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/huay2384-lgtm/future-neon-interpret)
+
+### 本地运行
 
 ### 环境要求
 - Node.js (推荐 v18+)
